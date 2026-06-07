@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-cyber-blue: #00f0ff;
+  --color-cyber-purple: #bd00ff;
+  --color-cyber-cyan: #00ffd1;
+  --color-cyber-dark: #070913;
+  --color-cyber-dark-accent: #0f132e;
+}
+
+/* Custom styling, scans, glows, and animations */
+@layer base {
+  html, body {
+    background-color: var(--color-cyber-dark);
+    color: #e2e8f0;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    scrollbar-width: thin;
+    scrollbar-color: #bd00ff #070913;
+  }
+
+  /* Custom Webkit scrollbar for premium feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070913;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00f0ff, #bd00ff);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #bd00ff;
+  }
+}
+
+@layer utilities {
+  /* Cinematic Neon Glows */
+  .neon-text-blue {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.3), 0 0 40px rgba(0, 240, 255, 0.1);
+  }
+  .neon-text-purple {
+    text-shadow: 0 0 10px rgba(189, 0, 255, 0.6), 0 0 20px rgba(189, 0, 255, 0.3), 0 0 40px rgba(189, 0, 255, 0.1);
+  }
+  .neon-text-cyan {
+    text-shadow: 0 0 10px rgba(0, 255, 209, 0.6), 0 0 20px rgba(0, 255, 209, 0.3), 0 0 40px rgba(0, 255, 209, 0.1);
+  }
+  
+  .neon-border-blue {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), inset 0 0 8px rgba(0, 240, 255, 0.2);
+    border: 1px solid rgba(0, 240, 255, 0.5);
+  }
+  .neon-border-purple {
+    box-shadow: 0 0 15px rgba(189, 0, 255, 0.3), inset 0 0 8px rgba(189, 0, 255, 0.2);
+    border: 1px solid rgba(189, 0, 255, 0.5);
+  }
+  .neon-border-cyan {
+    box-shadow: 0 0 15px rgba(0, 255, 209, 0.3), inset 0 0 8px rgba(0, 255, 209, 0.2);
+    border: 1px solid rgba(0, 255, 209, 0.5);
+  }
+
+  /* Glassmorphism Preset */
+  .glass-card {
+    background: rgba(15, 19, 46, 0.45);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    background: rgba(20, 26, 61, 0.6);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+  }
+
+  /* Cybernetic Hologram scanlines, grid elements */
+  .grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+  .grid-pattern-cyan {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 255, 209, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 209, 0.03) 1px, transparent 1px);
+  }
+
+  .hologram-scan {
+    position: relative;
+    overflow: hidden;
+  }
+  .hologram-scan::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 240, 255, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 4px, 6px 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .scanline-animation {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 240, 255, 0.4) 10%,
+      rgba(0, 240, 255, 0.4) 11%,
+      transparent 12%,
+      transparent 100%
+    );
+    animation: scanline 8s linear infinite;
+    background-size: 100% 200%;
+  }
+
+  @keyframes scanline {
+    0% { background-position: 0 -100%; }
+    100% { background-position: 0 100%; }
+  }
+
+  .glitch-text {
+    animation: textGlitch 5s ease-in-out infinite alternate;
+  }
+
+  @keyframes textGlitch {
+    0%, 95%, 100% {
+      text-shadow: 0 0 5px rgba(0, 240, 255, 0.4);
+    }
+    96% {
+      text-shadow: -2px -2px 0px #ff0055, 2px 2px 0px #00ffaa;
+    }
+    98% {
+      text-shadow: 2px -2px 0px #ff0055, -2px 2px 0px #00ffaa;
+    }
+  }
+
+  /* Cinematic floating */
+  .float-slow {
+    animation: floating ease-in-out infinite alternate;
+  }
+  .float-slow-delay-1 {
+    animation: floating ease-in-out infinite alternate;
+    animation-delay: 2s;
+  }
+  .float-slow-delay-2 {
+    animation: floating ease-in-out infinite alternate;
+    animation-delay: 4s;
+  }
+
+  @keyframes floating {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(0.5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+}

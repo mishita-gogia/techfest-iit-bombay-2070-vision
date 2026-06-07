@@ -1,0 +1,6 @@
+{
+  "name": "Techfest 2070",
+  "description": "Techfest 2070 - Journey Into The Future: A 3D interactive immersive experience of futuristic tech innovations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
